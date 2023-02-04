@@ -22,15 +22,15 @@ CREATE TABLE products (
 
 CREATE TABLE favourites (
   id SERIAL PRIMARY KEY NOT NULL,
-  user_id INTEGER REFERENCES users(id),
-  product_id INTEGER REFERENCES products(id)
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  product_id INTEGER REFERENCES products(id) ON DELETE CASCADE
 );
 
 CREATE TABLE messages (
   id SERIAL PRIMARY KEY NOT NULL,
-  to_user_id INTEGER REFERENCES users(id)
-  from_user_id INTEGER REFERENCES users(id)
-  product_id INTEGER REFERENCES products(id)
+  to_user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  from_user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  product_id INTEGER REFERENCES products(id) ON DELETE CASCADE,
   time_stamp DATE,
   content TEXT
 );
