@@ -6,9 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
   <script src="/vendor/jquery-3.0.0.js"></script>
+  <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
   <title>Login</title>
 </head>
 <body>
+  <%- include('partials/_header') %>
   <h1>Login</h1>
 
   <form action="/users/login" method="POST">
