@@ -11,7 +11,7 @@ CREATE TABLE products (
   price DECIMAL (10,2) NOT NULL,
   type VARCHAR(255) NOT NULL,
   name VARCHAR(255) NOT NULL,
-  description VARCHAR(255) NOT NULL,
+  description TEXT NOT NULL,
   contact VARCHAR(255) NOT NULL,
   sold BOOLEAN,
   image VARBINARY(max) NOT NULL,
