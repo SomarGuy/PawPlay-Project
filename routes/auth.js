@@ -1,5 +1,9 @@
 const express = require('express');
 const router  = express.Router();
+const bcrypt = require("bcrypt");
+const { pool } = require('../dbConfig');
+const db = require ('../db/connection')
+
 
 router.get('/users/register', (req, res) => {
   res.render("register")
@@ -13,7 +17,7 @@ router.get('/users/dashboard', (req, res) => {
   res.render("dashboard", { user: "Diogo"});
 })
 
-router.post('/users/register', (req, res) => {
+router.post('/users/register', async (req, res) => {
   let { name, email, password, password2 } = req.body;
 
   console.log({
@@ -39,7 +43,29 @@ router.post('/users/register', (req, res) => {
 
   if(errors.length > 0) {
     res.render("register", { errors });
+  } else {
+
+    let hashedPassword = await bcrypt.hash(password, 10);
+    console.log(hashedPassword);
+
+    pool.query(
+      `SELECT * FROM users
+      WHERE email = $1`,
+      [email],
+      (err, results) => {
+        if (err) {
+          throw err;
+        }
+        console.log(results.rows);
+
+        if(results.rowCount.length > 0) {
+          errors.push({message: "Email already registered"});
+          res.render('register', { errors });
+        }
+      }
+    );
   }
-})
+});
+
 
 module.exports = router;

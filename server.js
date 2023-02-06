@@ -5,7 +5,6 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
-const { pool } = require("./dbConfig");
 
 
 const PORT = process.env.PORT || 8080;
