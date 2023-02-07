@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <title>Home Page</title>
 
@@ -12,24 +11,28 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <!--App CSS-->
+  <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
 
   <!--External Fonts-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
-
-
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
 
-  <!--App CSS-->
-  <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
+  <!--jquerry library-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
-
+<%- include('partials/_header') %>
 <body>
-  <h1>Home</h1>
-
-  <a href="/auth/users/login">Login</a>
+  <header class = "header">
+    <h1> Featured Products </h1>
+    <h2>Filter By Price </h2>
+  </header>
+  <div class="products-container">
+  </div>
 </body>
 
 </html>
