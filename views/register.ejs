@@ -6,23 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
   <script src="/vendor/jquery-3.0.0.js"></script>
+  <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
+
   <title>Register</title>
 </head>
 <body>
   <%- include('partials/_header') %>
   <h1>Register</h1>
 
-<<<<<<< HEAD
-  <ul>
-    <% if(typeof errors != 'undefined') { %>
-      <% errors.forEach(error => { %>
-        <li><%= error.message %></li>
-      <% }) %>
-    <% } %>
-  </ul>
-
-=======
->>>>>>> buy_sell
   <form action="/auth/users/register" method="POST">
     <div>
       <input type="text" id="name" name="name" placeholder="Name" required>
