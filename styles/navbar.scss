@@ -5,21 +5,25 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
 }
 .navbar-logo{
   align-self: center;
   font-family: 'Bungee', cursive;
   font-size: 48px;
+  margin-left: 12px;
 }
 .navbar-menu {
   display: flex;
   justify-content: space-between;
+  font-size: 8px;
 }
 .navbar-button {
   background-color: rgb(0, 162, 255);
   color: white;
   padding: 14px 25px;
-  font-size: 24px;
+  font-size: 18px;
   text-align: center;
   text-decoration: none;
 }

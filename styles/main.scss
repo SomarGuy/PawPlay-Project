@@ -1,7 +1,6 @@
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   min-height: 100vh;
 
@@ -16,4 +15,23 @@ body {
     rgba(163, 208, 219, 1) 100%
   );
 }
+.header {
+  margin-top: 100px;
+  border-style: dotted;
+  border-color: black;
+  border-width: medium;
+  text-align: center;
+  width: 90%;
+  color:rgb(243, 248, 253)
+}
+.products-container{
+  margin-top: 10px;
+  width: 70%;
 
+}
+.products {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 3px solid rgb(250, 243, 243);
+}
