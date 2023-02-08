@@ -99,5 +99,18 @@ router.post("/listing", upload.single('image'), (req, res, ) => {
   });
 });
 
+//Route for products available
+router.get("/products", (req, res) => {
+  const query = `SELECT * FROM products`;
+  db.query(query, (err, results) => {
+    if (err) {
+      console.log(err)
+      return res.status(500).send("Error fetching products from the database");
+    }
+
+    res.render("products", { products: results.rows });
+  });
+});
+
 module.exports = router;
 

@@ -61,6 +61,19 @@ router.post('/users/register', async (req, res) => {
         if(results.rowCount.length > 0) {
           errors.push({message: "Email already registered"});
           res.render('register', { errors });
+        } else {
+          pool.query(
+            `INSERT INTO users (name, email, password)
+            VALUES ($1, $2, $3)`,
+            [name, email, hashedPassword],
+            (err, results) => {
+              if (err) {
+                throw err;
+              }
+              console.log(results);
+              res.redirect('/users/login');
+            }
+          );
         }
       }
     );
