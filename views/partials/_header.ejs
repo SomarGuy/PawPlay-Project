@@ -7,7 +7,7 @@
     <a class = "navbar-button" href="/item/products">Products |</a>
     <a class = "navbar-button" href="/login">Favorites |</a>
     <a class = "navbar-button" href="/register">Filter |</a>
-    <% if (typeof req.session.user !== 'undefined' && req.session.user) { %>
+    <% if (req.session.user) { %>
       <a class = "navbar-button" href="/auth/users/logout">Logout </a>
     <% } else { %>
       <a class = "navbar-button" href="/auth/users/login">Login </a>
