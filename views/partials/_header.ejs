@@ -4,9 +4,13 @@
   <div class="navbar-menu">
     <a class = "navbar-button" href="/item/listing">Sell products |</a>
     <a class = "navbar-button" href="/register">Messages |</a>
-    <a class = "navbar-button" href="/login">Your Items |</a>
+    <a class = "navbar-button" href="/item/products">Products |</a>
     <a class = "navbar-button" href="/login">Favorites |</a>
     <a class = "navbar-button" href="/register">Filter |</a>
-    <a class = "navbar-button" href="/auth/users/login">Login </a>
+    <% if (typeof req.session.user !== 'undefined' && req.session.user) { %>
+      <a class = "navbar-button" href="/auth/users/logout">Logout </a>
+    <% } else { %>
+      <a class = "navbar-button" href="/auth/users/login">Login </a>
+    <% } %>
   </div>
 </nav>

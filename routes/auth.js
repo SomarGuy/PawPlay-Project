@@ -17,8 +17,15 @@ router.get('/users/register', (req, res) => {
 })
 
 router.get('/users/login', (req, res) => {
-  res.render("login")
+  res.render("login", { req })
 })
+
+// Logout request
+router.get("/users/logout", (req, res) => {
+  req.session = null;
+  console.log("Successful logout, cookie-session:", req.session);
+  res.redirect("/auth/users/login");
+  });
 
 // Login post request
 router.post("/users/login", (req, res) => {

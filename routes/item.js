@@ -150,7 +150,7 @@ router.get("/products", (req, res) => {
       return res.status(500).send("Error fetching products from the database");
     }
 
-    res.render("products", { products: results.rows });
+    res.render("products", { products: results.rows, req: req });
   });
 });
 
