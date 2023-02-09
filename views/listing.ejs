@@ -57,19 +57,25 @@
   </form>
   <h2>Your Product Listing</h2>
   <ul>
-    <% products.forEach(function(product) { %>
-      <li>
-        <h2><%= product.name %></h2>
-        <p>Price: $<%= product.price %></p>
-        <p>Type: <%= product.type %></p>
-        <p>Description: <%= product.description %></p>
-        <p>Contact: <%= product.contact %></p>
-        <img src="<%= product.image %>" alt="<%= product.name %>">
-        <form action="/item/listing/<%= product.id %>/delete" method="post">
-          <input type="submit" value="Delete" class="btn red">
-        </form>
-      </li>
-    <% }); %>
+    <% if (products.length) { %>
+      <% products.forEach(function(product) { %>
+        <% if (req.session.user && product.user_id === req.session.user.id) { %>
+          <li>
+            <h2><%= product.name %></h2>
+            <p>Price: $<%= product.price %></p>
+            <p>Type: <%= product.type %></p>
+            <p>Description: <%= product.description %></p>
+            <p>Contact: <%= product.contact %></p>
+            <img src="<%= product.image %>" alt="<%= product.name %>">
+            <form action="/item/listing/<%= product.id %>/delete" method="post">
+              <input type="submit" value="Delete" class="btn red">
+            </form>
+          </li>
+        <% } %>
+      <% }); %>
+    <% } else { %>
+      <li>You do not have any products listed.</li>
+    <% } %>
   </ul>
 </body>
 </html>
