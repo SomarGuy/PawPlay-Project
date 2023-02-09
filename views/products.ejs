@@ -35,9 +35,8 @@
         <p>Price: $<%= product.price %></p>
         <p>Type: <%= product.type %></p>
         <p>Description: <%= product.description %></p>
-        <p>Contact: <%= product.contact %></p>
+        <p><a href="mailto:<%= product.contact %>">Contact Seller</a></p>
         <img src="<%= product.image %>" alt="<%= product.name %>">
-        </form>
       </li>
     <% }); %>
   </ul>
