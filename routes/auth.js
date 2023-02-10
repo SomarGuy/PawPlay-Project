@@ -13,7 +13,7 @@ router.use(cookieSession({
 
 
 router.get('/users/register', (req, res) => {
-  res.render("register")
+  res.render("register", { req })
 })
 
 router.get('/users/login', (req, res) => {
