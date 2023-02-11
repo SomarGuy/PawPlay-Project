@@ -1,13 +1,13 @@
 <nav class="navbar">
-  <span class="navbar-logo"> PawPlay</span>
+  <span class="navbar-logo">PawPlay</span>
   <div class="navbar-menu">
-    <a class = "navbar-button" href="/item/listing">Sell products |</a>
-    <a class = "navbar-button" href="/item/products">Products |</a>
-    <a class = "navbar-button" href="/login">Favourites |</a>
+    <a class = "navbar-button" href="/item/listing">Sell products</a>
+    <a class = "navbar-button" href="/item/products">Products</a>
+    <a class = "navbar-button" href="/login">Favourites</a>
     <% if (req.session.user) { %>
-      <a class = "navbar-button" href="/auth/users/logout">Logout </a>
+      <a class = "navbar-button" href="/auth/users/logout">Logout</a>
     <% } else { %>
-      <a class = "navbar-button" href="/auth/users/login">Login </a>
+      <a class = "navbar-button" href="/auth/users/login">Login</a>
     <% } %>
   </div>
 </nav>
