@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <%- include('partials/_header', { req: req }) %>
   <title>Products Page</title>
 
   <meta charset="UTF-8" >
@@ -14,6 +15,7 @@
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="/styles/listing.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
 </head>
@@ -33,9 +35,8 @@
         <p>Price: $<%= product.price %></p>
         <p>Type: <%= product.type %></p>
         <p>Description: <%= product.description %></p>
-        <p>Contact: <%= product.contact %></p>
+        <p><a href="mailto:<%= product.contact %>">Contact Seller</a></p>
         <img src="<%= product.image %>" alt="<%= product.name %>">
-        </form>
       </li>
     <% }); %>
   </ul>
