@@ -14,17 +14,6 @@
   <%- include('partials/_header') %>
   <h1>Register</h1>
 
-<<<<<<< HEAD
-  <ul>
-    <% if(typeof errors != 'undefined') { %>
-      <% errors.forEach(error => { %>
-        <li><%= error.message %></li>
-      <% }) %>
-    <% } %>
-  </ul>
-
-=======
->>>>>>> body-main
   <form action="/auth/users/register" method="POST">
     <div>
       <input type="text" id="name" name="name" placeholder="Name" required>
