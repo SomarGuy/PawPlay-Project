@@ -6,6 +6,7 @@ const path = require ('path');
 const db = require ('../db/connection')
 const cookieSession = require("cookie-session");
 
+
 router.use(cookieSession({
   name: "session",
   keys: ["key_1", "key_2"],

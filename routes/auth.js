@@ -66,23 +66,11 @@ router.post("/users/login", (req, res) => {
     res.render("dashboard", { user: "Diogo"});
     });
 
-    router.post('/users/register', async (req, res) => {
-    let { name, email, password, password2 } = req.body;
-
-    console.log({
-    name,
-    email,
-    password,
-    password2
-
-
-  });
-});
-
 router.get('/users/dashboard', (req, res) => {
   res.render("dashboard", { user: "Diogo"});
 })
 
+// Register new user to the database
 router.post('/users/register', async (req, res) => {
   let { name, email, password, password2 } = req.body;
 
@@ -110,39 +98,39 @@ router.post('/users/register', async (req, res) => {
   if(errors.length > 0) {
     res.render("register", { errors });
   } else {
-
-    let hashedPassword = await bcrypt.hash(password, 10);
-    console.log(hashedPassword);
-
-    pool.query(
+    // Check if the email is already registered
+    let emailTaken = false;
+    let results = await pool.query(
       `SELECT * FROM users
       WHERE email = $1`,
-      [email],
-      (err, results) => {
-        if (err) {
-          throw err;
-        }
-        console.log(results.rows);
-
-        if(results.rowCount.length > 0) {
-          errors.push({message: "Email already registered"});
-          res.render('register', { errors });
-        } else {
-          pool.query(
-            `INSERT INTO users (name, email, password)
-            VALUES ($1, $2, $3)`,
-            [name, email, hashedPassword],
-            (err, results) => {
-              if (err) {
-                throw err;
-              }
-              console.log(results);
-              res.redirect('/auth/users/login');
-            }
-          );
-        }
-      }
+      [email]
     );
+    console.log(results.rows);
+
+    if(results.rowCount > 0) {
+      emailTaken = true;
+      errors.push({message: "Email already registered"});
+    }
+
+    // If the email is already registered, render the register page with error message
+    if (emailTaken) {
+      res.render('register', { errors });
+    } else {
+      // Hash the password
+      let hashedPassword = await bcrypt.hash(password, 10);
+      console.log(hashedPassword);
+
+      // Insert the new user into the database
+      results = await pool.query(
+        `INSERT INTO users (name, email, password)
+        VALUES ($1, $2, $3)`,
+        [name, email, hashedPassword]
+      );
+      console.log(results);
+
+      // Redirect the user to the login page
+      res.redirect('/auth/users/login');
+    }
   }
 });
 
