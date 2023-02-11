@@ -29,19 +29,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script>
 
-
-    // First Like Button
-       var btnvar1 = document.getElementById('btnh1');
-
-       function Toggle1(){
-                if (btnvar1.style.color =="red") {
-                    btnvar1.style.color = "grey"
-                }
-                else{
-                    btnvar1.style.color = "red"
-                }
-       }
-
     </script>
   <h1>Products for Sale</h1>
   <ul>
@@ -52,9 +39,6 @@
         <p>Type: <%= product.type %></p>
         <p>Description: <%= product.description %></p>
         <p><a href="mailto:<%= product.contact %>">Contact Seller</a></p>
-        <div class="heartbtns">
-          <Button onclick="Toggle1()" id="btnh1" class="heartbtn"><i class="fa fa-heart-o"></i></Button>
-      </div>
         <img src="<%= product.image %>" alt="<%= product.name %>">
       </li>
     <% }); %>

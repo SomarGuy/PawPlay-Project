@@ -154,6 +154,19 @@ router.get("/products", (req, res) => {
   });
 });
 
+//Route for favourite products
+router.get("/favourites", (req, res) => {
+  const query = `SELECT * FROM products`;
+  db.query(query, (err, results) => {
+    if (err) {
+      console.log(err)
+      return res.status(500).send("Error fetching products from the database");
+    }
+
+    res.render("favourites", { products: results.rows, req: req });
+  });
+});
+
 
 
 module.exports = router;
